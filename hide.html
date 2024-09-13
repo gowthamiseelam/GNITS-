@@ -1,0 +1,29 @@
+<!doctype html>
+<head>
+    <title>show and hide element periodically</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #element{
+        width:450px;
+        height:450px;
+        background-color:lightblue;
+        text-align:center;
+        line-height:400px;
+        font-size:50px;
+        }
+    </style>
+    </head>
+    <body>
+        <center>
+        <h1>Hello!!!</h1>
+        <div id="element">I am Gowthami</div>
+        <script>
+            $(document).ready(function(){
+            setInterval(function(){
+            $('#element').fadeToggle(500);//toggles fading in and out
+            },1000);//interval in milliseconds(1000ms=1s)
+            });
+        </script>
+        </center>
+    </body>
+</html>
