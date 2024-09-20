@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Star Rating System</title>
+  <style>
+    .rating {
+      font-size: 45px;
+    }
+    
+    .star {
+      color: grey;
+      cursor: pointer;
+    }
+    
+    .star.rated {
+      color:goldenrod;
+    }
+    
+    .rated-value {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>KALINGA</h1>
+    <img src="kalinga.jpg" height="500" width="300" style="float:left" >
+    <br><br>
+    <h2>Kalinga Movie:A rural drama with impressive direction and visually stunning moments</h2>
+    <p style="font-size:120%;"> &ensp; Kalinga follows Linga (Dhruva Vaayu), an orphan from Kalinga village in Telangana. 
+        Though carefree and fond of drinking, Ling is deeply in love with Paddu (Pragya Nayan). 
+        His life turns upside down when Bali (Sanjay), the troublemaking brother of the village 
+        head (Aadukalam Naren), sets his sights on Paddu, creating a rift between the couple. 
+        To win Paddu's hand, Linga must clear his family’s debts, all while fending off Bali's advances</p>
+        <br>
+    <h2>Rate Your Experience</h2>
+  <div class="rating">
+    <span class="star" data-rating="1">★</span>
+    <span class="star" data-rating="2">★</span>
+    <span class="star" data-rating="3">★</span>
+    <span class="star" data-rating="4">★</span>
+    <span class="star" data-rating="5">★</span>
+  </div>
+  <div class="rated-value">Rated: 0/5</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+     
+      var ratedValue = 0;
+
+      $('.star').click(function() {
+        ratedValue = $(this).data('rating');
+        updateRating(ratedValue);
+      });
+      
+      function updateRating(rating) {
+        $('.star').removeClass('rated');
+        for (var i = 1; i <= rating; i++) {
+          $('.star:eq(' + (i - 1) + ')').addClass('rated');
+        }
+        $('.rated-value').text('Rated: ' + rating + '/5');
+      }
+    });
+  </script>
+</body>
+</html>

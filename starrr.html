@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Star Rating System</title>
+  <style>
+    .rating {
+      font-size: 30px;
+    }
+    
+    .star {
+      color: #ccc;
+      cursor: pointer;
+    }
+    
+    .star.rated {
+      color: #ffd700;
+    }
+    
+    .rated-value {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="rating">
+    <span class="star" data-rating="1">&#9733;</span>
+    <span class="star" data-rating="2">&#9733;</span>
+    <span class="star" data-rating="3">&#9733;</span>
+    <span class="star" data-rating="4">&#9733;</span>
+    <span class="star" data-rating="5">&#9733;</span>
+  </div>
+  <div class="rated-value"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Initialize rated value
+      var ratedValue = 0;
+      
+      // Handle star click event
+      $('.star').click(function() {
+        ratedValue = $(this).data('rating');
+        updateRating(ratedValue);
+      });
+      
+      // Update rating function
+      function updateRating(rating) {
+        $('.star').removeClass('rated');
+        for (var i = 1; i <= rating; i++) {
+          $('.star:eq(' + (i - 1) + ')').addClass('rated');
+        }
+        $('.rated-value').text('Rated: ' + rating + '/5');
+      }
+    });
+  </script>
+</body>
+</html>

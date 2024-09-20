@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shape Shifter</title>
+	<style>
+		.box {
+			width: 450px;
+			height: 450px;
+			background-color: hsl(61, 67%, 47%);
+			transition: all 0.5s ease-in-out;
+		}
+		
+		.circle {
+			border-radius: 100%;
+			width: 450px;
+			height: 450px;
+			background-color: #30106b;
+		}
+	</style>
+</head>
+<body>
+    <center>
+	<div class="box" id="box"></div>
+</center>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function()  {
+			$('#box').click(function() {
+				$('#box').toggleClass('circle');
+			});
+		});
+	</script>
+</body>
+</html>
