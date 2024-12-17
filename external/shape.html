@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Change Block Shape and Color</title>
+  <style>
+    #block {
+      width: 400px;
+      height: 400px;
+      background-color: blue;
+      margin: 50px auto;
+      transition: all 0.5s ease;
+    }
+
+    #changeBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="block"></div>
+  <button id="changeBtn">Change</button>
+
+  <script>
+    // Get references to the block and button
+    const block = document.getElementById('block');
+    const changeBtn = document.getElementById('changeBtn');
+
+    // Add an event listener to the button
+    changeBtn.addEventListener('click', () => {
+      // Generate a random color
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+      // Toggle between square and circle
+      if (block.style.borderRadius === '50%') {
+        block.style.borderRadius = '0%'; // Change back to square
+      } else {
+        block.style.borderRadius = '50%'; // Change to circle
+      }
+
+      // Change the background color
+      block.style.backgroundColor = randomColor;
+    });
+  </script>
+</body>
+</html>
