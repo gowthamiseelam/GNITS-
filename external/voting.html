@@ -1,0 +1,40 @@
+import React, { useState } from 'react';
+
+function Voting() {
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(0);
+    const [result, setResult] = useState("");
+
+    const handleSubmit = () => {
+        if (value1 > value2) {
+            setResult(`Amaran movie is better than Devara by ${value1 - value2} votes`);
+        } else if (value2 > value1) {
+            setResult(`Devara movie is better than Amaran by ${value2 - value1} votes`);
+        } else {
+            setResult("It's a tie!");
+        }
+    };
+
+    return (
+        <>
+            <div>
+                <label>Amaran: </label>
+                <input type="text" value={value1} readOnly />
+                <button onClick={() => setValue1(value1 + 1)}>Vote</button>
+            </div>
+            <br />
+            <div>
+                <label>Devara: </label>
+                <input type="text" value={value2} readOnly />
+                <button onClick={() => setValue2(value2 + 1)}>Vote</button>
+            </div>
+            <br />
+            <button onClick={handleSubmit}>Submit</button>
+            <br />
+            <br />
+            {result && <p><strong>Result:</strong> {result}</p>}
+        </>
+    );
+}
+
+export default Voting;
