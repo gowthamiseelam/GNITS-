@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import './styles.css';
 
 const CounterApp = () => {
   // State to manage the counter value
@@ -8,35 +6,39 @@ const CounterApp = () => {
   const [submittedValue, setSubmittedValue] = useState(null);
 
   // Handlers for increment and decrement
-  const increment = () => setCounter(counter + 1);
-  const decrement = () => setCounter(counter > 0 ? counter - 1 : 0);
+  function increment() {
+    setCounter(counter + 1);
+  }
+
+  function decrement() {
+    setCounter(counter > 0 ? counter - 1 : 0);
+  }
 
   // Handler for submit
-  const handleSubmit = () => {
+  function handleSubmit() {
     setSubmittedValue(counter);
-  };
+  }
 
   return (
-    <div className="container">
+    <div>
       <h1>React Counter App</h1>
 
-      <div className="counter-controls">
-        <button onClick={decrement} className="btn">-</button>
-        <span className="counter">{counter}</span>
-        <button onClick={increment} className="btn">+</button>
+      <div>
+        <input type="text" value={counter} readOnly /><br />
+        <button onClick={decrement}>Decrement</button>
+        <button onClick={increment}>Increment</button>
       </div>
+      <br />
 
-      <button onClick={handleSubmit} className="submit-btn">Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
 
       {submittedValue !== null && (
-        <p className="submitted-value">
-          Submitted Counter Value: <strong>{submittedValue}</strong>
+        <p>
+          <h1>Submitted Counter Value: <strong>{submittedValue}</strong></h1>
         </p>
       )}
     </div>
   );
 };
+
 export default CounterApp;
-
-
-
